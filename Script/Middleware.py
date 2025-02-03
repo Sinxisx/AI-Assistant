@@ -1,14 +1,15 @@
 from fastapi import FastAPI, HTTPException, Depends
+from pydantic import BaseModel
 import asyncpg
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv()
 
 app = FastAPI()
 
-# Database Configuration
+# Database Config
 DB_CONFIG = {
     "host": os.getenv("DB_HOST"),
     "database": os.getenv("DB_NAME"),
@@ -17,7 +18,7 @@ DB_CONFIG = {
     "port": os.getenv("DB_PORT"),
 }
 
-# Create a connection pool
+# Database Connection
 async def get_db():
     return await asyncpg.create_pool(**DB_CONFIG)
 
@@ -29,25 +30,25 @@ async def startup():
 async def shutdown():
     await app.state.db_pool.close()
 
-# Dependency for database connection
 async def get_connection():
     async with app.state.db_pool.acquire() as connection:
         yield connection
 
-# Route to execute SQL queries
-@app.post("/query")
-async def query_db(query: str, conn=Depends(get_connection)):
-    try:
-        query = query.strip().lower()
+# ✅ Define a Pydantic Model for API Requests
+class QueryRequest(BaseModel):
+    query: str
 
-        if "select" in query:
-            results = await conn.fetch(query)
+# ✅ Updated FastAPI Route with Correct Parsing
+@app.post("/query")
+async def query_db(request: QueryRequest, conn=Depends(get_connection)):
+    try:
+        sql_query = request.query.strip().lower()
+
+        if "select" in sql_query:
+            results = await conn.fetch(sql_query)
             return {"data": [dict(row) for row in results]}
         else:
-            await conn.execute(query)
+            await conn.execute(sql_query)
             return {"status": "success"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
-# Run the API with:
-# uvicorn main:app --reload
