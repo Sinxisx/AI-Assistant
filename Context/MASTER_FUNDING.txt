@@ -1,0 +1,247 @@
+[
+  {
+    "name": "BASE_DT",
+    "mode": "",
+    "type": "STRING",
+    "description": "The date of the data (YYYYMMDD)",
+    "fields": []
+  },
+  {
+    "name": "BASE_DT_PARSED",
+    "mode": "",
+    "type": "DATE",
+    "description": "The date of the data parsed as date",
+    "fields": []
+  },
+  {
+    "name": "BASE_YM",
+    "mode": "",
+    "type": "STRING",
+    "description": "The year-month of the data (YYYYMM)",
+    "fields": []
+  },
+  {
+    "name": "AGREE_ID",
+    "mode": "",
+    "type": "STRING",
+    "description": "Unique identifier of the funding account",
+    "fields": []
+  },
+  {
+    "name": "FLAG",
+    "mode": "",
+    "type": "STRING",
+    "description": "Flag of account type (Sharia/Conventional)",
+    "fields": []
+  },
+  {
+    "name": "REGION",
+    "mode": "",
+    "type": "STRING",
+    "description": "Region location of the funding account",
+    "fields": []
+  },
+  {
+    "name": "AREA",
+    "mode": "",
+    "type": "STRING",
+    "description": "Area location of the funding account",
+    "fields": []
+  },
+  {
+    "name": "BRANCH",
+    "mode": "",
+    "type": "STRING",
+    "description": "Branch location of the funding account",
+    "fields": []
+  },
+  {
+    "name": "CIF_NO",
+    "mode": "",
+    "type": "STRING",
+    "description": "Unique customer identifier",
+    "fields": []
+  },
+  {
+    "name": "CUST_TYPE",
+    "mode": "",
+    "type": "STRING",
+    "description": "Type of customer (Individual/Non-Individual)",
+    "fields": []
+  },
+  {
+    "name": "PROD_NM",
+    "mode": "",
+    "type": "STRING",
+    "description": "Product name of the funding account",
+    "fields": []
+  },
+  {
+    "name": "SUB_PROD_NM",
+    "mode": "",
+    "type": "STRING",
+    "description": "Sub product name of the funding account",
+    "fields": []
+  },
+  {
+    "name": "SEGMENT",
+    "mode": "",
+    "type": "STRING",
+    "description": "Segment of the customer",
+    "fields": []
+  },
+  {
+    "name": "GCIF_NAME",
+    "mode": "",
+    "type": "STRING",
+    "description": "Name of the customer",
+    "fields": []
+  },
+  {
+    "name": "PROD_TYPE",
+    "mode": "",
+    "type": "STRING",
+    "description": "Product type of the account (CA/SA/TD)",
+    "fields": []
+  },
+  {
+    "name": "CURR_CODE",
+    "mode": "",
+    "type": "STRING",
+    "description": "Currency code",
+    "fields": []
+  },
+  {
+    "name": "COLT",
+    "mode": "",
+    "type": "STRING",
+    "description": "Collateral status (1 or 0)",
+    "fields": []
+  },
+  {
+    "name": "RATE_DPK",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Interest rate of the account",
+    "fields": []
+  },
+  {
+    "name": "BASE_AMT_FIX",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "End of day funding amount of the account",
+    "fields": []
+  },
+  {
+    "name": "MTD_AVG_AMT_FIX",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Month-to-date funding amount of the account",
+    "fields": []
+  },
+  {
+    "name": "DTD",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Day-to-date funding amount change of the account",
+    "fields": []
+  },
+  {
+    "name": "MTD",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Month-to-date funding amount change of the account",
+    "fields": []
+  },
+  {
+    "name": "YTD",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Year-to-date funding amount change of the account",
+    "fields": []
+  },
+  {
+    "name": "DIVISION",
+    "mode": "",
+    "type": "STRING",
+    "description": "The division of the funding customer",
+    "fields": []
+  },
+  {
+    "name": "SOURCE",
+    "mode": "",
+    "type": "STRING",
+    "description": "Source of data",
+    "fields": []
+  },
+  {
+    "name": "SEGMENT_FIX",
+    "mode": "",
+    "type": "STRING",
+    "description": "Segment of funding the customer",
+    "fields": []
+  },
+  {
+    "name": "BASE_AMT_ACCUM_MTD",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Month-to-date accumulation of funding amount",
+    "fields": []
+  },
+  {
+    "name": "INT_EXP_ACCUM_MTD",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Month-to-date accumulation of interest expense",
+    "fields": []
+  },
+  {
+    "name": "COF_MTD",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "Month-to-date cost of fund of the funding account",
+    "fields": []
+  },
+  {
+    "name": "HIGH_COF_FLAG",
+    "mode": "",
+    "type": "STRING",
+    "description": "Category of month-to-date cost of fund",
+    "fields": []
+  },
+  {
+    "name": "LOB_SORT",
+    "mode": "",
+    "type": "STRING",
+    "description": "Code for sorting the customer segment",
+    "fields": []
+  },
+  {
+    "name": "CASA_TD",
+    "mode": "",
+    "type": "STRING",
+    "description": "Category of the funding account (CASA/TD)",
+    "fields": []
+  },
+  {
+    "name": "DTD_10B",
+    "mode": "",
+    "type": "STRING",
+    "description": "Flag of day-to-date 10 billion funding loss",
+    "fields": []
+  },
+  {
+    "name": "MTD_10B",
+    "mode": "",
+    "type": "STRING",
+    "description": "Flag of month-to-date 10 billion funding loss",
+    "fields": []
+  },
+  {
+    "name": "BLOCK",
+    "mode": "",
+    "type": "STRING",
+    "description": "Flag of account block status",
+    "fields": []
+  }
+]
