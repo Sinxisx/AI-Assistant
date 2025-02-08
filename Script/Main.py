@@ -143,9 +143,11 @@ while run=="Y":
         if 'detail' in query_result:
             print(sql_query)
             print(f"Query invalid: {query_result['detail']}")
-            naturalQuery=input("Please try again using more domain specific language: ")
+            naturalQuery=input("Please refine te prompt using more domain specific language: ")
             continue
-        else: 
+        else:
+            print(sql_query)
+            print(query_result) 
             chat_hist, insight = generate_insight(chat_hist,naturalQuery,sql_query,query_result)
             print(insight)
             print("***********")

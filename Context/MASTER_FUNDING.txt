@@ -3,7 +3,7 @@
     "name": "base_dt",
     "mode": "",
     "type": "bigint",
-    "description": "The date of the data (YYYYMMDD)",
+    "description": "The date of the data in the format of YYYYMMDD",
     "fields": []
   },
   {
@@ -17,7 +17,7 @@
     "name": "base_ym",
     "mode": "",
     "type": "bigint",
-    "description": "The year-month of the data (YYYYMM)",
+    "description": "The year-month of the data in the format of YYYYMM",
     "fields": []
   },
   {
@@ -129,14 +129,14 @@
     "name": "base_amt_fix",
     "mode": "",
     "type": "double precision",
-    "description": "End of day funding amount of the account",
+    "description": "End of day funding amount of the account in IDR",
     "fields": []
   },
   {
     "name": "mtd_avg_amt_fix",
     "mode": "",
     "type": "double precision",
-    "description": "Month-to-date funding amount of the account",
+    "description": "Month-to-date funding amount of the account in IDR",
     "fields": []
   },
   {
@@ -185,7 +185,7 @@
     "name": "base_amt_accum_mtd",
     "mode": "",
     "type": "double precision",
-    "description": "Month-to-date accumulation of funding amount",
+    "description": "Month-to-date accumulation of funding amount in IDR",
     "fields": []
   },
   {
