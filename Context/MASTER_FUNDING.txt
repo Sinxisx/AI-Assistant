@@ -2,245 +2,245 @@
   {
     "name": "base_dt",
     "mode": "",
-    "type": "STRING",
+    "type": "bigint",
     "description": "The date of the data (YYYYMMDD)",
     "fields": []
   },
   {
     "name": "base_dt_parsed",
     "mode": "",
-    "type": "DATE",
+    "type": "text",
     "description": "The date of the data parsed as date",
     "fields": []
   },
   {
     "name": "base_ym",
     "mode": "",
-    "type": "STRING",
+    "type": "bigint",
     "description": "The year-month of the data (YYYYMM)",
     "fields": []
   },
   {
     "name": "agree_id",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Unique identifier of the funding account",
     "fields": []
   },
   {
     "name": "flag",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Flag of account type (Sharia/Conventional)",
     "fields": []
   },
   {
     "name": "region",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Region location of the funding account",
     "fields": []
   },
   {
     "name": "area",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Area location of the funding account",
     "fields": []
   },
   {
     "name": "branch",
     "mode": "",
-    "type": "string",
+    "type": "text",
     "description": "Branch location of the funding account",
     "fields": []
   },
   {
     "name": "cif_no",
     "mode": "",
-    "type": "string",
+    "type": "text",
     "description": "Unique customer identifier",
     "fields": []
   },
   {
     "name": "cust_type",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Type of customer (Individual/Non-Individual)",
     "fields": []
   },
   {
     "name": "prod_nm",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Product name of the funding account",
     "fields": []
   },
   {
     "name": "sub_prod_nm",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Sub product name of the funding account",
     "fields": []
   },
   {
     "name": "segment",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Segment of the customer",
     "fields": []
   },
   {
     "name": "gcif_name",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Name of the customer",
     "fields": []
   },
   {
     "name": "prod_type",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Product type of the account (CA/SA/TD)",
     "fields": []
   },
   {
     "name": "curr_code",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Currency code",
     "fields": []
   },
   {
     "name": "colt",
     "mode": "",
-    "type": "STRING",
+    "type": "double precision",
     "description": "Collateral status (1 or 0)",
     "fields": []
   },
   {
     "name": "rate_dpk",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Interest rate of the account",
     "fields": []
   },
   {
     "name": "base_amt_fix",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "End of day funding amount of the account",
     "fields": []
   },
   {
     "name": "mtd_avg_amt_fix",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Month-to-date funding amount of the account",
     "fields": []
   },
   {
     "name": "dtd",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Day-to-date funding amount change of the account",
     "fields": []
   },
   {
     "name": "mtd",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Month-to-date funding amount change of the account",
     "fields": []
   },
   {
     "name": "ytd",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Year-to-date funding amount change of the account",
     "fields": []
   },
   {
     "name": "division",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "The division of the funding customer",
     "fields": []
   },
   {
     "name": "source",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Source of data",
     "fields": []
   },
   {
     "name": "segment_fix",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Segment of funding the customer",
     "fields": []
   },
   {
     "name": "base_amt_accum_mtd",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Month-to-date accumulation of funding amount",
     "fields": []
   },
   {
     "name": "int_exp_accum_mtd",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Month-to-date accumulation of interest expense",
     "fields": []
   },
   {
     "name": "cof_mtd",
     "mode": "",
-    "type": "FLOAT",
+    "type": "double precision",
     "description": "Month-to-date cost of fund of the funding account",
     "fields": []
   },
   {
     "name": "high_cof_flag",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Category of month-to-date cost of fund",
     "fields": []
   },
   {
     "name": "lob_sort",
     "mode": "",
-    "type": "STRING",
+    "type": "bigint",
     "description": "Code for sorting the customer segment",
     "fields": []
   },
   {
     "name": "casa_td",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Category of the funding account (CASA/TD)",
     "fields": []
   },
   {
     "name": "dtd_10b",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Flag of day-to-date 10 billion funding loss",
     "fields": []
   },
   {
     "name": "mtd_10b",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Flag of month-to-date 10 billion funding loss",
     "fields": []
   },
   {
     "name": "block",
     "mode": "",
-    "type": "STRING",
+    "type": "text",
     "description": "Flag of account block status",
     "fields": []
   }
