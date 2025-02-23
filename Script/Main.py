@@ -114,42 +114,43 @@ def query_database(sql_query):
     response = requests.post(API_URL, json={"query": sql_query})
     return response.json()
 
-# Run initial setup
-print("Initialize model...")
-chat_hist = initial_setup()
+if __name__ == "__main__":
+    # Run initial setup
+    print("Initialize model...")
+    chat_hist = initial_setup()
 
-# Run query and result generation
-loop = 0
-run = "Y"
-naturalQuery = None
-finish = False
-while run=="Y": 
-    loop += 1
-    if naturalQuery is None:
-        naturalQuery=input("Enter yout data related question: ") # Natural query input
-    elif loop>1 and finish==True:
-        naturalQuery=input("Enter yout data related question: ") # Natural query input
-    finish=False 
-    # Generate natural query
-    chat_hist, sql_query = generate_sql_query(chat_hist,naturalQuery) 
-    if sql_query=="No SQL query detected":
-        print('Query Generation Failed.')
-        naturalQuery=input("Please try again using more precise language: ")
-        naturalQuery=f'''The previous question doesn't generate sql statement.
-        Here is the new question: {naturalQuery}'''
-    else:
-        # Query database from the generated query
-        query_result = query_database(sql_query)
-        if 'detail' in query_result:
-            print(sql_query)
-            print(f"Query invalid: {query_result['detail']}")
-            naturalQuery=input("Please refine te prompt using more domain specific language: ")
-            continue
+    # Run query and result generation
+    loop = 0
+    run = "Y"
+    naturalQuery = None
+    finish = False
+    while run=="Y": 
+        loop += 1
+        if naturalQuery is None:
+            naturalQuery=input("Enter yout data related question: ") # Natural query input
+        elif loop>1 and finish==True:
+            naturalQuery=input("Enter yout data related question: ") # Natural query input
+        finish=False 
+        # Generate natural query
+        chat_hist, sql_query = generate_sql_query(chat_hist,naturalQuery) 
+        if sql_query=="No SQL query detected":
+            print('Query Generation Failed.')
+            naturalQuery=input("Please try again using more precise language: ")
+            naturalQuery=f'''The previous question doesn't generate sql statement.
+            Here is the new question: {naturalQuery}'''
         else:
-            print(sql_query)
-            print(query_result) 
-            chat_hist, insight = generate_insight(chat_hist,naturalQuery,sql_query,query_result)
-            print(insight)
-            print("***********")
-    run = input("Do you want to continue? [Y/n]: ").upper()
-    finish = True
+            # Query database from the generated query
+            query_result = query_database(sql_query)
+            if 'detail' in query_result:
+                print(sql_query)
+                print(f"Query invalid: {query_result['detail']}")
+                naturalQuery=input("Please refine te prompt using more domain specific language: ")
+                continue
+            else:
+                print(sql_query)
+                print(query_result) 
+                chat_hist, insight = generate_insight(chat_hist,naturalQuery,sql_query,query_result)
+                print(insight)
+                print("***********")
+        run = input("Do you want to continue? [Y/n]: ").upper()
+        finish = True
