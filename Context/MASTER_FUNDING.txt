@@ -87,7 +87,7 @@
     "name": "segment",
     "mode": "",
     "type": "text",
-    "description": "Segment of the customer",
+    "description": "Segment of the customer. Possible values: CFS-NONRB-MICRO, XXX-GB-CORP, CFS-NONRB-SME+, CFS-NONRB-RSME, CFS-NONRB-BB",
     "fields": []
   },
   {
@@ -178,7 +178,7 @@
     "name": "segment_fix",
     "mode": "",
     "type": "text",
-    "description": "Segment of funding the customer",
+    "description": "Fixed segment of funding the customer. Possible values: GB_CORP, CFS-SME+,CFS-BB,CFS-SMER & MICRO",
     "fields": []
   },
   {

@@ -34,16 +34,15 @@ async def get_connection():
     async with app.state.db_pool.acquire() as connection:
         yield connection
 
-# ✅ Define a Pydantic Model for API Requests
+# Define a Pydantic Model for API Requests
 class QueryRequest(BaseModel):
     query: str
 
-# ✅ Updated FastAPI Route with Correct Parsing
+# Updated FastAPI Route with Correct Parsing
 @app.post("/query")
 async def query_db(request: QueryRequest, conn=Depends(get_connection)):
     try:
-        sql_query = request.query.strip().lower()
-
+        sql_query = request.query.strip()
         if "select" in sql_query:
             results = await conn.fetch(sql_query)
             return {"data": [dict(row) for row in results]}

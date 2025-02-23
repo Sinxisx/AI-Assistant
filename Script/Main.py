@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import os
 import psycopg2
+from dotenv import load_dotenv
 
 # Set Ollama API URL endpoint
 OLLAMA_API_URL = "http://localhost:11434/api/chat"
@@ -93,7 +94,7 @@ Based on that, an SQL query was generated and executed:
 The query returned the following result:
 {formatted_result}
 
-Please provide a detailed explanation of the insights, trends, or key points that can be derived from these results if necessary.
+Please provide a brief explanation of the insights, trends, or key points that can be derived from these results if necessary.
 """
     chat_hist.append({"role":"user","content":prompt})
     payload = {
@@ -113,6 +114,25 @@ def query_database(sql_query):
     API_URL = "http://127.0.0.1:8000/query"
     response = requests.post(API_URL, json={"query": sql_query})
     return response.json()
+def query_database_direct(sql_query):
+    try:
+        conn = psycopg2.connect(
+            host=os.getenv("DB_HOST"),
+            database=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS")
+        )
+        cur = conn.cursor()
+        cur.execute(sql_query)
+        result = cur.fetchall() # Or cur.fetchone()
+        conn.commit()
+    except psycopg2.Error as e:
+        result = f"Database error: {e}"
+    finally:
+        if conn:
+            cur.close()
+            conn.close()
+        return result
 
 if __name__ == "__main__":
     # Run initial setup
@@ -140,7 +160,7 @@ if __name__ == "__main__":
             Here is the new question: {naturalQuery}'''
         else:
             # Query database from the generated query
-            query_result = query_database(sql_query)
+            query_result = query_database_direct(sql_query)
             if 'detail' in query_result:
                 print(sql_query)
                 print(f"Query invalid: {query_result['detail']}")

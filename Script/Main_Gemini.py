@@ -5,6 +5,7 @@ import re
 import os
 import psycopg2
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 class ChatBot:
     def __init__(self, system_instruction, model_name="gemini-2.0-flash"): #specifying the model name
@@ -53,10 +54,10 @@ class ChatBot:
     def generate_sql_query(self, natural_language):
         script_dir = Path.cwd()
         # # Navigate to the parent directory and then into the Context folder
-        # context_dir = script_dir.parent / "Context"
+        context_dir = script_dir.parent / "Context"
 
         # Construct the full path to the file
-        file_path = script_dir / "Context" / "MASTER_FUNDING.txt"
+        file_path = context_dir / "MASTER_FUNDING.txt"
 
         # Open context file in read mode
         with open(file_path, "r") as file:
@@ -103,7 +104,7 @@ SQL Query:"""
     The query returned the following result:
     {formatted_result}
 
-    Please provide a detailed explanation of the insights, trends, or key points that can be derived from these results if necessary.
+    Please provide a brief explanation of the insights, trends, or key points that can be derived from these results if necessary.
     """
         response = self.get_response(prompt)
         return response
@@ -112,6 +113,26 @@ SQL Query:"""
         API_URL = "http://127.0.0.1:8000/query"
         response = requests.post(API_URL, json={"query": sql_query})
         return response.json()
+    def query_database_direct(sql_query):
+        try:
+            conn = psycopg2.connect(
+                host=os.getenv("DB_HOST"),
+                database=os.getenv("DB_NAME"),
+                user=os.getenv("DB_USER"),
+                password=os.getenv("DB_PASS")
+            )
+            cur = conn.cursor()
+            cur.execute(sql_query)
+            result = cur.fetchall() # Or cur.fetchone()
+            conn.commit()
+        except psycopg2.Error as e:
+            result = f"Database error: {e}"
+        finally:
+            if conn:
+                cur.close()
+                conn.close()
+            return result
+        
 # Example usage
 if __name__ == "__main__":
     # Configure generative ai
@@ -143,7 +164,7 @@ if __name__ == "__main__":
             Here is the new question: {naturalQuery}'''
         else:
             # Query database from the generated query
-            query_result = ChatBot.query_database(sql_query) #call the method statically
+            query_result = ChatBot.query_database_direct(sql_query) #call the method statically
             if 'detail' in query_result:
                 print(sql_query)
                 print(f"Query invalid: {query_result['detail']}")
@@ -152,7 +173,7 @@ if __name__ == "__main__":
             else:
                 print(sql_query)
                 print(query_result) 
-                insight = chatbot.generate_insight(naturalQuery,sql_query,query_result) #call the method on the instance
+                insight = chatbot.generate_insight(naturalQuery,sql_query,query_result)
                 print(insight)
                 print("***********")
         run = input("Do you want to continue? [Y/n]: ").upper()
