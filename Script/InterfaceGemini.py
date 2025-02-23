@@ -8,7 +8,7 @@ load_dotenv()
 # Configure generative ai
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))  # Replace with your actual Gemini API key
 #Import chatbot file
-from ChatbotGemini import ChatBot
+from ChatbotDeepseek import ChatBot
 
 # Chatbot Instance
 system_instruction = 'You are a friendly and helpful data analyst. The user will ask you question about data analysis, be prepared.'
@@ -24,7 +24,8 @@ def respond(message, chat_history):
             response = f"Query invalid: {query_result['detail']}. Please refine te prompt using more domain specific language"
         else:
             insight = chatbot.generate_insight(message,sql_query,query_result)
-            response = f"SQL Query:\n {sql_query}\nQuery Result:\n {query_result}\nInsight:\n {insight}"
+#            response = f"SQL Query:\n {sql_query}\nQuery Result:\n {query_result}\nInsight:\n {insight}" # for debugging
+            response = f"{insight}"
     chat_history.append((message, response))
     return "", chat_history
 

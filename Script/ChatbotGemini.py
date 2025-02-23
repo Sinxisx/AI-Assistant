@@ -104,7 +104,7 @@ SQL Query:"""
     The query returned the following result:
     {formatted_result}
 
-    Please provide a brief explanation of the insights, trends, or key points that can be derived from these results if necessary.
+    Please show the result in tabular format and provide a brief explanation of the insights, trends, or key points that can be derived from these results if necessary.
     """
         response = self.get_response(prompt)
         return response
