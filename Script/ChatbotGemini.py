@@ -54,7 +54,7 @@ class ChatBot:
     def generate_sql_query(self, natural_language):
         script_dir = Path.cwd()
         # # Navigate to the parent directory and then into the Context folder
-        context_dir = script_dir.parent / "Context"
+        context_dir = script_dir.parent / "AI Assistant" / "Context"
 
         # Construct the full path to the file
         file_path = context_dir / "MASTER_FUNDING.txt"
